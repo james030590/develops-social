@@ -51,6 +51,7 @@
 		1A54BD041F5F395C0098248D /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		1A54BD061F5F3B030098248D /* FancyField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyField.swift; sourceTree = "<group>"; };
 		1A54BD081F5F3C2D0098248D /* FancyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyButton.swift; sourceTree = "<group>"; };
+		1A54BD0A1F5F4F010098248D /* devslopes-social.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "devslopes-social.entitlements"; sourceTree = "<group>"; };
 		4196DFA5807AA566F5AC9398 /* Pods-devslopes-socialTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-devslopes-socialTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-devslopes-socialTests/Pods-devslopes-socialTests.debug.xcconfig"; sourceTree = "<group>"; };
 		87E22BD38D1F0D18DC0B863C /* Pods-devslopes-socialTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-devslopes-socialTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-devslopes-socialTests/Pods-devslopes-socialTests.release.xcconfig"; sourceTree = "<group>"; };
 		F7327EF72ED43F83B7085B44 /* Pods-devslopes-social.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-devslopes-social.debug.xcconfig"; path = "Pods/Target Support Files/Pods-devslopes-social/Pods-devslopes-social.debug.xcconfig"; sourceTree = "<group>"; };
@@ -101,6 +102,7 @@
 		1A4BC7841F5F104A0057D8EB /* devslopes-social */ = {
 			isa = PBXGroup;
 			children = (
+				1A54BD0A1F5F4F010098248D /* devslopes-social.entitlements */,
 				1A54BD011F5F37920098248D /* Util */,
 				1A54BCFE1F5F14860098248D /* Controller */,
 				1A54BCFD1F5F14800098248D /* View */,
@@ -236,6 +238,11 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = V2654A77S8;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					1A4BC7951F5F104A0057D8EB = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -356,6 +363,9 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-devslopes-social/Pods-devslopes-social-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -363,6 +373,9 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -546,6 +559,7 @@
 			baseConfigurationReference = F7327EF72ED43F83B7085B44 /* Pods-devslopes-social.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "devslopes-social/devslopes-social.entitlements";
 				DEVELOPMENT_TEAM = V2654A77S8;
 				INFOPLIST_FILE = "devslopes-social/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -560,6 +574,7 @@
 			baseConfigurationReference = 0CA28F234726C0E4A9464851 /* Pods-devslopes-social.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "devslopes-social/devslopes-social.entitlements";
 				DEVELOPMENT_TEAM = V2654A77S8;
 				INFOPLIST_FILE = "devslopes-social/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
