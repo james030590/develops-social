@@ -27,6 +27,7 @@ class SignInVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
+        ///auto sign in with keyChainWrapper if user has an authenticated account
         if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
             print("JAMES: ID found in keychain")
             performSegue(withIdentifier: "goToFeed", sender: nil)
@@ -90,6 +91,9 @@ class SignInVC: UIViewController {
         
     }
     
+    ///////////completes the sign in from facebook or from email, password//////////////////
+    ///////////and sets the Kaychain wrapper to a users Unique ID for auto//////////////////
+    //////////           sign in to be implemented                         //////////////////
     func completeSignIn(id: String) {
         
         KeychainWrapper.standard.set(id, forKey: KEY_UID)
