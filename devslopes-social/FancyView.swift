@@ -8,6 +8,7 @@
 
 import UIKit
 
+//////////Shadow created at the bottom of the view/////////////
 class FancyView: UIView {
 
 

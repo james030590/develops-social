@@ -127,11 +127,49 @@
                     <connections>
                         <outlet property="emailField" destination="NV1-Wf-udK" id="gGp-KN-gAU"/>
                         <outlet property="passwordField" destination="6hP-C3-R5t" id="cwo-7j-lJi"/>
+                        <segue destination="Vde-km-QW8" kind="show" identifier="goToFeed" id="QFT-B6-crt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
+        </scene>
+        <!--FeedVC-->
+        <scene sceneID="vXA-gC-TVU">
+            <objects>
+                <viewController id="Vde-km-QW8" customClass="FeedVC" customModule="devslopes_social" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RZI-yo-oa9"/>
+                        <viewControllerLayoutGuide type="bottom" id="q1h-yN-Bnw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gx4-eA-5SU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ONK-WA-6v1">
+                                <rect key="frame" x="157" y="313" width="60" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.51372549020000002" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="backBtnPressed:" destination="Vde-km-QW8" eventType="touchUpInside" id="6ey-Su-I0l"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.73725490199999999" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ONK-WA-6v1" firstAttribute="centerY" secondItem="gx4-eA-5SU" secondAttribute="centerY" id="4X1-eq-cOP"/>
+                            <constraint firstItem="ONK-WA-6v1" firstAttribute="centerX" secondItem="gx4-eA-5SU" secondAttribute="centerX" id="H7s-ax-mZz"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToLogin" id="nhn-1J-6RD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MQ4-jC-7LN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="893.60000000000002" y="123.68815592203899"/>
         </scene>
     </scenes>
     <resources>

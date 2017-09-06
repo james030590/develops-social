@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A33E65B1F60535700BE42B5 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A33E65A1F60535700BE42B5 /* FeedVC.swift */; };
 		1A4BC7861F5F104A0057D8EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4BC7851F5F104A0057D8EB /* AppDelegate.swift */; };
 		1A4BC7881F5F104A0057D8EB /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4BC7871F5F104A0057D8EB /* SignInVC.swift */; };
 		1A4BC78B1F5F104A0057D8EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A4BC7891F5F104A0057D8EB /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		0CA28F234726C0E4A9464851 /* Pods-devslopes-social.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-devslopes-social.release.xcconfig"; path = "Pods/Target Support Files/Pods-devslopes-social/Pods-devslopes-social.release.xcconfig"; sourceTree = "<group>"; };
+		1A33E65A1F60535700BE42B5 /* FeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
 		1A4BC7821F5F104A0057D8EB /* devslopes-social.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "devslopes-social.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A4BC7851F5F104A0057D8EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A4BC7871F5F104A0057D8EB /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				1A4BC7871F5F104A0057D8EB /* SignInVC.swift */,
+				1A33E65A1F60535700BE42B5 /* FeedVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -378,6 +382,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -415,6 +420,7 @@
 				1A4BC7881F5F104A0057D8EB /* SignInVC.swift in Sources */,
 				1A54BD051F5F395C0098248D /* RoundButton.swift in Sources */,
 				1A54BD091F5F3C2D0098248D /* FancyButton.swift in Sources */,
+				1A33E65B1F60535700BE42B5 /* FeedVC.swift in Sources */,
 				1A4BC7861F5F104A0057D8EB /* AppDelegate.swift in Sources */,
 				1A54BD001F5F37180098248D /* FancyView.swift in Sources */,
 				1A54BD031F5F37A50098248D /* Constants.swift in Sources */,
