@@ -36,6 +36,8 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         //observes any changes to posts in the FBase Database and saves it in snapshot
         DataService.ds.REF_POSTS.observe(.value, with: { (snapshot) in
             
+            self.posts = []
+            
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapshot {
                     //each snap from the snapshot is a post containing a caption, imageUrl and likes
@@ -131,6 +133,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
                     print("JAMES: Successfully uploaded image to FBase Storage")
                     let downloadUrl = metadata?.downloadURL()?.absoluteString
                     if let url = downloadUrl {
+                        //if an image url is created then allow post to be created in firebase
                         self.postToFirebase(imageUrl: url)
                     }
                 }
@@ -139,19 +142,23 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     }
     
     func postToFirebase(imageUrl: String) {
+        //creates a dictionary containing the data to be posted to firebase
         let post: Dictionary<String, Any> = [
             "caption": captionField.text!,
             "imageUrl": imageUrl,
             "likes": 0
         ]
         
+        // sends post dictionary to firebase and autoId's the post for us
         let firebasePost = DataService.ds.REF_POSTS.childByAutoId()
         firebasePost.setValue(post)
         
+        // clears the caption field and image selected image, and makes the app aware that the user has not picked an image
         captionField.text = ""
         imageSelected = false
         imageToAdd.image = UIImage(named: "add-image")
         
+        // reloads the feed to include the new post
         tableView.reloadData()
     }
     
