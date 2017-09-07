@@ -10,17 +10,25 @@ import UIKit
 import Firebase
 import SwiftKeychainWrapper
 
-class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var imageToAdd: CircleView!
     
     var posts = [Post]()
+    var imagePicker: UIImagePickerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.delegate = self
         tableView.dataSource = self
+        
+        //needed for choosing images with image picker
+        imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = true  // allows editing before picking picture from camera roll
+        imagePicker.delegate = self
+        ///////////////////////////////////////////
         
         //observes any changes to posts in the FBase Database and saves it in snapshot
         DataService.ds.REF_POSTS.observe(.value, with: { (snapshot) in
@@ -64,11 +72,29 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
         
     }
+    
+    ////////needed to conform to image picker protocol//////////////////
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        //info is an array which contains the selected edited image
+        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+            //updates imageToAdd outlet in this VC
+            imageToAdd.image = image
+        } else {
+            print("JAMES: Valid image wasnt selected")
+        }
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
 
     @IBAction func signOutPressed(_ sender: Any) {
         // the signout button removes the Key from the KeyChain Wrapper so that auto sign in isnt allowed
         KeychainWrapper.standard.remove(key: KEY_UID)
         try! Auth.auth().signOut()
         performSegue(withIdentifier: "goToLogin", sender: nil)
+    }
+    
+    //presents the image picker if button is tapped
+    @IBAction func addImageTapped(_ sender: Any) {
+        present(imagePicker, animated: true, completion: nil)
     }
 }
