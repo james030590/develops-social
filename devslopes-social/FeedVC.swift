@@ -22,14 +22,19 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.delegate = self
         tableView.dataSource = self
         
+        //observes any changes to posts in the FBase Database and saves it in snapshot
         DataService.ds.REF_POSTS.observe(.value, with: { (snapshot) in
             
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapshot {
+                    //each snap from the snapshot is a post containing a caption, imageUrl and likes
                     print("SNAP: \(snap)")
+                    //postDict = the contents of the post as a Dictionary of <String, Any>, which is passed to the Post class as a parameter on init
                     if let postDict = snap.value as? Dictionary<String, Any> {
+                        //snaps .key is a unique postID and its .value is the contents of the post as an Dictionary of <String, Any>
                         let key = snap.key
                         let post = Post(postKey: key, postData: postDict)
+                        // the created post is appended to the posts array
                         self.posts.append(post)
                     }
                 }
@@ -56,7 +61,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
 
     @IBAction func signOutPressed(_ sender: Any) {
-        
+        // the signout button removes the Key from the KeyChain Wrapper so that auto sign in isnt allowed
         KeychainWrapper.standard.remove(key: KEY_UID)
         try! Auth.auth().signOut()
         performSegue(withIdentifier: "goToLogin", sender: nil)
