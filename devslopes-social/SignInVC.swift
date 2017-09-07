@@ -59,7 +59,9 @@ class SignInVC: UIViewController {
             } else {
                 print("JAMES: Successfully authenticated with Firebase")
                 if let user = user {
-                    self.completeSignIn(id: user.uid)                }
+                    let userData = ["provider": credential.provider]
+                    self.completeSignIn(id: user.uid, userData: userData)
+                }
             }
         }
     }
@@ -72,7 +74,8 @@ class SignInVC: UIViewController {
                 if error == nil {
                     print("JAMES: Email User authenticated with firebase")
                     if let user = user {
-                        self.completeSignIn(id: user.uid)
+                        let userData = ["provider": user.providerID]
+                        self.completeSignIn(id: user.uid, userData: userData)
                     }
                 } else {
                     Auth.auth().createUser(withEmail: email, password: pwd, completion: { (user, error) in
@@ -81,7 +84,8 @@ class SignInVC: UIViewController {
                         } else {
                             print("JAMES: Email User successfully authenticated")
                             if let user = user {
-                                self.completeSignIn(id: user.uid)
+                                let userData = ["provider": user.providerID]
+                                self.completeSignIn(id: user.uid, userData: userData)
                             }
                         }
                     })
@@ -94,8 +98,9 @@ class SignInVC: UIViewController {
     ///////////completes the sign in from facebook or from email, password//////////////////
     ///////////and sets the Kaychain wrapper to a users Unique ID for auto//////////////////
     //////////           sign in to be implemented                         //////////////////
-    func completeSignIn(id: String) {
+    func completeSignIn(id: String, userData: Dictionary<String, String>) {
         
+        DataService.ds.createFirebaseDBUser(uid: id, userData: userData)
         KeychainWrapper.standard.set(id, forKey: KEY_UID)
         print("JAMES: Data saved to keychain")
         performSegue(withIdentifier: "goToFeed", sender: nil)
