@@ -17,6 +17,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     
     var posts = [Post]()
     var imagePicker: UIImagePickerController!
+    static var imageCache: NSCache<NSString, UIImage> = NSCache()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +53,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     
     }
     
+    /////functions to conform to tableView Protocol/////////////////////////////////
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -62,16 +64,28 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        // the current post in the tableView, this is passed to the PostCell's configure cell method and
+        // also used to check its imageUrl as a key for the imageCache
         let post = posts[indexPath.row]
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostCell {
-            cell.configureCell(post: post)
-            return cell
+            // imageCache contains NSStringKeys which are a posts imageUrl and its value is a UIImage of a downloaded image
+            // if the image has already been downloaded and is in the cache, no need to download it again, set the img var
+            // tot the image that is contained in the cache
+            if let img = FeedVC.imageCache.object(forKey: post.imageUrl as NSString) {
+                // configures the PostCell with an img already contained in cache
+                cell.configureCell(post: post, img: img)
+                return cell
+            } else {
+                // configures the PostCell that doesnt have the img already stored in cache, so the img paramater defaults to nil
+                cell.configureCell(post: post)
+                return cell
+            }
         } else {
             return PostCell()
         }
-        
     }
+    ///////////////////////////////////////////////////////////////////////////////////////
     
     ////////needed to conform to image picker protocol//////////////////
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
