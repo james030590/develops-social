@@ -36,7 +36,7 @@ class PostCell: UITableViewCell {
             // no image in cach
             let ref = Storage.storage().reference(forURL: post.imageUrl)
             //gets data from fireBase Storage, if completed succesfully stores image in data
-            ref.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
+            ref.getData(maxSize: 4 * 5000 * 5000, completion: { (data, error) in
                 if error != nil {
                     print("JAMES: Unable to download image from FBase Storage")
                 } else {
