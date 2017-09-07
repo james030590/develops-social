@@ -6,21 +6,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-<<<<<<< HEAD
-=======
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
->>>>>>> likes
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Sign InVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-<<<<<<< HEAD
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="devslopes_social" customModuleProvider="target" sceneMemberID="viewController">
-=======
                 <viewController id="BYZ-38-t0r" customClass="SignInVC" customModule="devslopes_social" customModuleProvider="target" sceneMemberID="viewController">
->>>>>>> likes
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -80,7 +73,7 @@
                                 </constraints>
                                 <state key="normal" image="f"/>
                                 <connections>
-                                    <action selector="facebookBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eau-CO-TVN"/>
+                                    <action selector="facebookBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zki-vx-VXc"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Dd8-AA-1bC">
@@ -106,7 +99,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="signInPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Py2-mG-XqD"/>
+                                            <action selector="signInPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0hB-If-oOb"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -132,8 +125,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="emailField" destination="NV1-Wf-udK" id="gGp-KN-gAU"/>
-                        <outlet property="passwordField" destination="6hP-C3-R5t" id="cwo-7j-lJi"/>
+                        <outlet property="emailField" destination="NV1-Wf-udK" id="red-Da-ldA"/>
+                        <outlet property="passwordField" destination="6hP-C3-R5t" id="5U5-Qh-P3i"/>
                         <segue destination="Vde-km-QW8" kind="show" identifier="goToFeed" id="QFT-B6-crt"/>
                     </connections>
                 </viewController>
