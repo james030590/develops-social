@@ -10,11 +10,13 @@ import UIKit
 import Firebase
 import SwiftKeychainWrapper
 
-class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imageToAdd: CircleView!
     @IBOutlet weak var captionField: FancyField!
+    @IBOutlet weak var profilePic: CircleView!
+    var tempImage: UIImage!
     
     var posts = [Post]()
     var imagePicker: UIImagePickerController!
@@ -26,6 +28,10 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
 
         tableView.delegate = self
         tableView.dataSource = self
+        
+        profilePic.image = UIImage(named: "add-profile-pic")
+        
+        captionField.delegate = self
         
         //needed for choosing images with image picker
         imagePicker = UIImagePickerController()
@@ -41,7 +47,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapshot {
                     //each snap from the snapshot is a post containing a caption, imageUrl and likes
-                    print("SNAP: \(snap)")
+                    //print("SNAP: \(snap)")
                     //postDict = the contents of the post as a Dictionary of <String, Any>, which is passed to the Post class as a parameter on init
                     if let postDict = snap.value as? Dictionary<String, Any> {
                         //snaps .key is a unique postID and its .value is the contents of the post as an Dictionary of <String, Any>
@@ -52,9 +58,27 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
                     }
                 }
             }
+            //self.posts.reverse()
             self.tableView.reloadData()
         })
     
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if let img = tempImage {
+            profilePic.image = img
+        }
+    }
+    
+    /////////////////////////////////////////////////////////////////////////////
+    /////////////////////DELEGATE FUNCTIONS BELOW////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////
+    
+    
+    // hides keyboard if return is pressed /////////////////
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
     }
     
     /////functions to conform to tableView Protocol/////////////////////////////////////////////////////////////////////////////////////////
@@ -107,7 +131,11 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     
-/////////////////////////BUTTON PRESSES///////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////BUTTON PRESSES BELOW///////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////
+    
+    
     @IBAction func postBtnPressed(_ sender: Any) {
         //guards to make sure when the post button is pressed, that there is an image selected and a caption is entered in the caption field
         guard let caption = captionField.text, caption != "" else {
@@ -159,6 +187,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         imageToAdd.image = UIImage(named: "add-image")
         
         // reloads the feed to include the new post
+        //self.posts.reverse()
         tableView.reloadData()
     }
     
@@ -174,6 +203,9 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         present(imagePicker, animated: true, completion: nil)
     }
     
+    @IBAction func addProfilePicTapped(_ sender: Any) {
+        performSegue(withIdentifier: "toProfile", sender: nil)
+    }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     

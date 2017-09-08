@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A22481D1F62C6B200262017 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A22481C1F62C6B200262017 /* ProfileVC.swift */; };
 		1A33E65B1F60535700BE42B5 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A33E65A1F60535700BE42B5 /* FeedVC.swift */; };
 		1A33E65D1F606D0E00BE42B5 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A33E65C1F606D0E00BE42B5 /* CircleView.swift */; };
 		1A33E65F1F60984F00BE42B5 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A33E65E1F60984F00BE42B5 /* PostCell.swift */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		0CA28F234726C0E4A9464851 /* Pods-devslopes-social.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-devslopes-social.release.xcconfig"; path = "Pods/Target Support Files/Pods-devslopes-social/Pods-devslopes-social.release.xcconfig"; sourceTree = "<group>"; };
+		1A22481C1F62C6B200262017 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		1A33E65A1F60535700BE42B5 /* FeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
 		1A33E65C1F606D0E00BE42B5 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		1A33E65E1F60984F00BE42B5 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			children = (
 				1A4BC7871F5F104A0057D8EB /* SignInVC.swift */,
 				1A33E65A1F60535700BE42B5 /* FeedVC.swift */,
+				1A22481C1F62C6B200262017 /* ProfileVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				1A54BD091F5F3C2D0098248D /* FancyButton.swift in Sources */,
 				1AEA28861F6151CE004B7DC5 /* DataService.swift in Sources */,
 				1A33E65B1F60535700BE42B5 /* FeedVC.swift in Sources */,
+				1A22481D1F62C6B200262017 /* ProfileVC.swift in Sources */,
 				1A4BC7861F5F104A0057D8EB /* AppDelegate.swift in Sources */,
 				1A54BD001F5F37180098248D /* FancyView.swift in Sources */,
 				1A54BD031F5F37A50098248D /* Constants.swift in Sources */,

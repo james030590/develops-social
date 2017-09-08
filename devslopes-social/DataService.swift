@@ -21,9 +21,11 @@ class DataService{
     private var _REF_BASE = DB_BASE
     private var _REF_POSTS = DB_BASE.child("posts")
     private var _REF_USERS = DB_BASE.child("users")
+    private var _REF_PROFILE_IMG_URL = DB_BASE.child("users").child("profile-pic-url")
     
     //Storage references
     private var _REF_POST_IMAGES = STORAGE_BASE.child("post-pics")
+    private var _REF_PROFILE_IMAGES = STORAGE_BASE.child("profile-pics")
     
     //DB
     var REF_BASE: DatabaseReference {
@@ -43,10 +45,18 @@ class DataService{
         let user = REF_USERS.child(uid!)
         return user
     }
+    
+    var REF_PROFILE_IMG_URL: DatabaseReference {
+        return _REF_PROFILE_IMG_URL
+    }
    
     //Storage
     var REF_POST_IMAGES: StorageReference {
         return _REF_POST_IMAGES
+    }
+    
+    var REF_PROFILE_IMAGES: StorageReference {
+        return _REF_PROFILE_IMAGES
     }
     
     
